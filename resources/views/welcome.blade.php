@@ -1,11 +1,13 @@
 <!doctype html>
 <html lang="es">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>SeduxaModels – Portada</title>
-  @vite(['resources/css/index.css', 'resources/js/index.js'])
+  @vite(['resources/css/home.css', 'resources/js/home.js'])
 </head>
+
 <body>
   <div class="page">
     <header class="topbar">
@@ -20,8 +22,8 @@
       </div>
 
       <div class="topActions">
-        <a class="topLink" href="./registro_agencias.html">Registro de agencias</a>
-        <a class="topLink" href="./index.html">Registro de modelos</a>
+        <a class="topLink" href="/registro">Registro de agencias</a>
+        <a class="topLink" href="/registro">Registro de modelos</a>
       </div>
     </header>
 
@@ -35,14 +37,16 @@
 
           <div class="auth">
             <label class="miniLabel">Correo</label>
-            <input class="miniInput" id="loginEmail" type="email" placeholder="correo@dominio.com" autocomplete="email" />
+            <input class="miniInput" id="loginEmail" type="email" placeholder="correo@dominio.com"
+              autocomplete="email" />
             <label class="miniLabel">Contraseña</label>
-            <input class="miniInput" id="loginPass" type="password" placeholder="••••••••" autocomplete="current-password" />
+            <input class="miniInput" id="loginPass" type="password" placeholder="••••••••"
+              autocomplete="current-password" />
             <button class="btnPrimarySm" id="btnLogin" type="button">Ingresar</button>
 
             <div class="authLinks">
-              <a href="./registro_usuario.html">Registrarse como usuario</a>
-              <a href="./olvide_password.html">Me olvidé de mi password</a>
+              <a href="registro">Registrarse como usuario</a>
+              <a href="{{ url('/olvide-password') }}">Me olvidé de mi password</a>
             </div>
           </div>
         </div>
@@ -63,7 +67,7 @@
         <div class="sideSection">
           <div class="sideTitle">Países activos</div>
           <div class="countries" id="countriesList"></div>
-          </div>
+        </div>
 
         <!-- ATRIBUTOS (NO LOGUEADO: CONTADOR SIMULATIVO, NO CLICK) -->
         <div class="sideSection" data-guest-only>
@@ -76,12 +80,12 @@
           <div class="sideTitle">Accesos</div>
 
           <div class="miniStack">
-            <a class="miniLink" href="/registro-studios">Registro Studios</a>
+            <a class="miniLink" href="/registro">Registro Studios</a>
             <a class="miniLink miniLinkAction" href="#" data-open-access="studios">Acceso Studios</a>
           </div>
 
           <div class="miniStack">
-            <a class="miniLink" href="/registro-modelos">Registro Models</a>
+            <a class="miniLink" href="/registro">Registro Models</a>
             <a class="miniLink miniLinkAction" href="#" data-open-access="models">Acceso Models</a>
           </div>
         </div>
@@ -261,4 +265,5 @@
 
   </div>
 </body>
+
 </html>

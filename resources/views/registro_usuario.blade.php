@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeduxaModels | Registro VIP</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    @vite(['resources/css/registro_usuario.css', 'resources/js/registro_usuario.js'])
+</head>
+
+<body>
+    <button type="button" class="btn-back" onclick="location.href='/'">← Volver</button>
+    <div class="wrap">
+        <h1>REGISTRO VIP</h1>
+
+        <form id="formVip" action="#" method="post" autocomplete="off">
+
+            <!-- Anti-autofill REAL (evita popup de credenciales guardadas) -->
+            <input type="text" name="fakeusernameremembered" autocomplete="username"
+                style="position:absolute;left:-9999px;opacity:0;height:0;width:0" tabindex="-1">
+            <input type="password" name="fakepasswordremembered" autocomplete="new-password"
+                style="position:absolute;left:-9999px;opacity:0;height:0;width:0" tabindex="-1">
+
+            <label>NickName *</label>
+            <input id="nick" name="nick" placeholder="Apodo" autocomplete="off" autocapitalize="off" autocorrect="off"
+                spellcheck="false">
+            <div id="error-nick" class="field-error"></div>
+
+            <label>Edad *</label>
+            <input id="edad" name="edad" placeholder="18 a 85" inputmode="numeric" type="tel" autocomplete="off"
+                autocapitalize="off" autocorrect="off" spellcheck="false">
+            <div id="error-edad" class="field-error"></div>
+
+            <label>Sexo *</label>
+            <div id="sexoBox" class="select disabled">
+                <div id="sexoHead" class="select-head">Selecciona</div>
+                <div class="select-list">
+                    <div>Hombre Heterosexual</div>
+                    <div>Hombre Gay</div>
+                    <div>Mujer Heterosexual</div>
+                    <div>Mujer Lesbiana</div>
+                    <div>Mujer Transgénero</div>
+                </div>
+            </div>
+            <input type="hidden" id="sexoVal" name="sexo" value="">
+
+            <label>WhatsApp *</label>
+            <div class="phone-row">
+                <div class="phone-code">
+                    <div id="phoneTrigger" class="phone-trigger disabled">
+                        <span id="phoneText">Código</span><span>▼</span>
+                    </div>
+                    <input type="hidden" id="phoneCode" name="country_code" value="">
+                </div>
+                <div class="phone-num">
+                    <input id="phoneNumber" name="whatsapp" placeholder="Número" inputmode="numeric" type="tel"
+                        autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" disabled>
+                </div>
+            </div>
+            <div id="error-whatsapp" class="field-error"></div>
+
+            <label>Correo *</label>
+            <input id="email" name="email" placeholder="correo@ejemplo.com" autocomplete="off" autocapitalize="off"
+                autocorrect="off" spellcheck="false" disabled readonly>
+            <div id="error-email" class="field-error"></div>
+
+            <label>Contraseña *</label>
+            <div class="pass-wrap">
+                <input id="pass" name="password" type="password" placeholder="••••••••" autocomplete="new-password"
+                    disabled readonly>
+                <span id="togglePass" class="eye">👁</span>
+            </div>
+            <div id="error-pass" class="field-error"></div>
+
+            <div class="checks">
+                <label><input type="checkbox" id="chk1" disabled> Declaro ser mayor de edad</label>
+
+                <label><input type="checkbox" class="rule" disabled> Prohibido mostrar menores en cámara, espejos,
+                    vidrios o
+                    pantallas</label>
+                <label><input type="checkbox" class="rule" disabled> Prohibido mostrar o manipular armas</label>
+                <label><input type="checkbox" class="rule" disabled> Prohibido mostrar o consumir drogas o
+                    sustancias</label>
+                <label><input type="checkbox" class="rule" disabled> Prohibido brindar o solicitar teléfonos, redes
+                    sociales,
+                    billeteras o cuentas bancarias</label>
+
+                <label><input type="checkbox" id="chkAccept" disabled> Acepto las Normas y Sanciones de la Página desde
+                    este
+                    momento</label>
+            </div>
+
+            <button id="btnCreate" class="btn-main" disabled type="submit">CREAR CUENTA</button>
+
+            <div id="msg" class="msg"></div>
+
+            <footer>
+                Propiedad Exclusiva de SEDUXAMODELS ®<br>
+                Todos los Derechos Reservados 2026
+            </footer>
+
+        </form>
+    </div>
+
+    <!-- MODAL CÓDIGO PAÍS -->
+    <div id="phoneModal" class="modal">
+        <div class="modal-box">
+            <div class="modal-head">
+                <div class="t">CÓDIGO DE PAÍS</div>
+                <button id="closeModalBtn" class="modal-close" type="button">Cerrar</button>
+            </div>
+            <div class="modal-body">
+                <div class="search-wrap">
+                    <input id="searchCountry" class="search" placeholder="Buscar país o +código" autocomplete="off">
+                    <span class="search-ico">🔎</span>
+                </div>
+                <div id="countryList" class="country-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { notifySuccess, notifyError } from "{{ Vite::asset('resources/js/helpers/swal.js') }}";
+
+        @if(session('success'))
+            notifySuccess('Éxito', "{{ session('success') }}");
+        @endif
+
+        @if(session('error'))
+            notifyError('Error', "{{ session('error') }}");
+        @endif
+
+        @if($errors->any())
+            notifyError('Error', "{{ $errors->first() }}");
+        @endif
+    </script>
+</body>
+
+</html>

@@ -1,3 +1,5 @@
+import { notifyError } from './helpers/swal.js';
+
 (() => {
   const $ = (s, r = document) => r.querySelector(s);
 
@@ -217,7 +219,7 @@ function doLoginFixed(btn) {
   const pass = (container.querySelector("#loginPass")?.value || "").trim();
 
   if (email !== "jebazanch@gmail.com" || pass !== "JB080371") {
-    alert("Usuario o contraseña incorrectos");
+    notifyError('Error de acceso', 'Usuario o contraseña incorrectos');
     return;
   }
 
