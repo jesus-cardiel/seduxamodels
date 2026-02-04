@@ -5,7 +5,20 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>SeduxaModels – Portada</title>
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   @vite(['resources/css/home.css', 'resources/js/home.js'])
+  <script>
+    @if(Auth::check())
+      // Sincronizar sesión de Laravel con el frontend
+      localStorage.setItem('seduxa_logged_user', JSON.stringify({
+          id: "{{ Auth::user()->id }}",
+          name: "{{ Auth::user()->name }}",
+          email: "{{ Auth::user()->email }}",
+          role: "{{ Auth::user()->role }}"
+      }));
+    @endif
+  </script>
 </head>
 
 <body>
@@ -40,8 +53,11 @@
             <input class="miniInput" id="loginEmail" type="email" placeholder="correo@dominio.com"
               autocomplete="email" />
             <label class="miniLabel">Contraseña</label>
-            <input class="miniInput" id="loginPass" type="password" placeholder="••••••••"
-              autocomplete="current-password" />
+            <div class="pass-wrap">
+              <input class="miniInput" id="loginPass" type="password" placeholder="••••••••"
+                autocomplete="current-password" />
+              <button type="button" class="toggle-pass" aria-label="Mostrar contraseña">👁</button>
+            </div>
             <button class="btnPrimarySm" id="btnLogin" type="button">Ingresar</button>
 
             <div class="authLinks">
@@ -264,6 +280,9 @@
     </div>
 
   </div>
-</body>
+    <form id="logoutForm" action="{{ route('logout') }}" method="POST" style="display:none">
+      @csrf
+    </form>
+  </body>
 
 </html>

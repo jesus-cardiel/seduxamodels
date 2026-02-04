@@ -209,35 +209,60 @@ function applyLoginUI() {
 // =========================
 // LOGIN FIJO (FUNCIONA EN SIDEBAR + DRAWER)
 // =========================
-function doLoginFixed(btn) {
-  // Importante: el drawer clona el sidebar y duplica IDs.
-  // Por eso leemos los inputs relativos al botón clickeado.
+async function doLoginFixed(btn) {
   const container = btn.closest(".auth");
   if (!container) return;
 
   const email = (container.querySelector("#loginEmail")?.value || "").trim();
-  const pass = (container.querySelector("#loginPass")?.value || "").trim();
+  const password = (container.querySelector("#loginPass")?.value || "").trim();
 
-  if (email !== "jebazanch@gmail.com" || pass !== "JB080371") {
-    notifyError('Error de acceso', 'Usuario o contraseña incorrectos');
+  if (!email || !password) {
+    notifyError('Error', 'Por favor ingresa correo y contraseña');
     return;
   }
 
-  const user = {
-    id: "VIP-001",
-    name: "Jebazanch",
-    country: "Perú",
-  };
+  btn.disabled = true;
 
-  localStorage.setItem(SESSION_KEY, JSON.stringify(user));
-  applyLoginUI();
+  try {
+    const response = await fetch('/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({ email, password })
+    });
 
-  // Si está abierto el drawer, ciérralo (evita confusión visual)
-  const drawer = document.getElementById("drawer");
-  if (drawer) drawer.setAttribute("aria-hidden", "true");
+    const data = await response.json();
+
+    if (!response.ok) {
+      notifyError('Error de acceso', data.message || 'Credenciales incorrectas');
+      btn.disabled = false;
+      return;
+    }
+
+    localStorage.setItem(SESSION_KEY, JSON.stringify(data.user));
+
+    // Redirigir al home real de Laravel (ahora es el root)
+    location.href = '/';
+  } catch (error) {
+    notifyError('Error de conexión', 'No se pudo conectar con el servidor');
+    btn.disabled = false;
+  }
 }
 
 // Delegación: sirve para sidebar y para el HTML clonado en drawer
+document.addEventListener("click", (e) => {
+  const btn = e.target.closest(".toggle-pass");
+  if (!btn) return;
+  const wrap = btn.closest(".pass-wrap");
+  const input = wrap?.querySelector("input");
+  if (input) {
+    input.type = input.type === "password" ? "text" : "password";
+  }
+});
+
 document.addEventListener("click", (e) => {
   const btn = e.target.closest("#btnLogin");
   if (!btn) return;
@@ -248,7 +273,7 @@ document.addEventListener("click", (e) => {
 // logout
 window.logoutSeduxa = function () {
   localStorage.removeItem(SESSION_KEY);
-  location.reload();
+  document.getElementById('logoutForm')?.submit();
 };
 
 // INIT

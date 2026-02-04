@@ -4,7 +4,7 @@ import { notifySuccess, notifyError } from './helpers/swal.js';
    Cambia SOLO estas 2 rutas si tu backend usa otras:
 */
 const API_REGISTER = '/vip/register';  // Web route (POST)
-const REDIRECT_VIP = '/home';                // Redirigir directamente al dashboard logeado
+const REDIRECT_VIP = '/';                // Redirigir directamente al dashboard (single page)
 
 const formVip = document.getElementById('formVip');
 
@@ -351,8 +351,7 @@ formVip.addEventListener('submit', async (e) => {
             return;
         }
 
-        notifySuccess('Cuenta creada', 'Redirigiendo...');
-        setTimeout(() => location.href = REDIRECT_VIP, 1500);
+        location.href = REDIRECT_VIP;
 
     } catch (_) {
         notifyError('Error de conexión', 'No se pudo conectar al servidor. Intenta de nuevo.');

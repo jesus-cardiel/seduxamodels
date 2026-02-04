@@ -28,6 +28,11 @@ class UserFactory extends Factory
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
+            'edad' => fake()->numberBetween(18, 85),
+            'sexo' => fake()->randomElement(['Hombre Heterosexual', 'Hombre Gay', 'Mujer Heterosexual', 'Mujer Lesbiana', 'Mujer Transgénero']),
+            'country_code' => 'VE',
+            'whatsapp' => '04' . fake()->numerify('#########'),
+            'role' => 'vip',
             'remember_token' => Str::random(10),
         ];
     }
