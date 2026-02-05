@@ -202,7 +202,11 @@ function applyLoginUI() {
     const hello = document.getElementById("userHello");
     const uid = document.getElementById("userId");
     if (hello) hello.textContent = `Hola, ${user?.name || ""}`.trim();
-    if (uid) uid.textContent = `ID: ${user?.id || ""}`.trim();
+    if (uid) {
+      const rawId = user?.id || "";
+      const formattedId = rawId ? `VIP-${String(rawId).padStart(3, '0')}` : "";
+      uid.textContent = `ID: ${formattedId}`;
+    }
   }
 }
 

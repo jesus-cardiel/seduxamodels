@@ -1,0 +1,432 @@
+:root {
+    /* ✅ COLORES SEDUXA (lila + fucsia) */
+    --gold: #b76cff;
+    --gold2: #ff2aa6;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+}
+
+body {
+    background: #000;
+    color: var(--gold);
+    font-family: 'Playfair Display', serif;
+}
+
+.wrap {
+    max-width: 420px;
+    margin: auto;
+    padding: 20px 16px 30px
+}
+
+h1 {
+    text-align: center;
+    margin: 10px auto 25px;
+    font-size: 22px;
+    letter-spacing: 2px;
+    white-space: nowrap;
+    max-width: 100%;
+    overflow: hidden;
+    background: linear-gradient(90deg, var(--gold), var(--gold2), var(--gold));
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 3s linear infinite;
+}
+
+@keyframes shine {
+    0% {
+        background-position: 0%
+    }
+
+    100% {
+        background-position: 100%
+    }
+}
+
+label {
+    display: block;
+    margin: 14px 0 6px;
+    font-size: 14px
+}
+
+input {
+    width: 100%;
+    padding: 14px;
+    background: #000;
+    border: 1px solid var(--gold);
+    border-radius: 10px;
+    color: var(--gold);
+    font-size: 16px
+}
+
+input::placeholder {
+    color: rgba(183, 108, 255, .6)
+}
+
+input:disabled {
+    opacity: .35
+}
+
+input[readonly] {
+    opacity: .9
+}
+
+/* ===== ACHICAR SOLO LOS 2 PRIMEROS INPUTS ===== */
+.input-sm {
+    padding: 10px !important;
+    font-size: 15px !important;
+    border-radius: 10px;
+}
+
+/* Select */
+.select {
+    position: relative;
+    border: 1px solid var(--gold);
+    border-radius: 10px
+}
+
+.select.disabled {
+    opacity: .35;
+    pointer-events: none
+}
+
+.select-head {
+    padding: 14px
+}
+
+.select-list {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    background: #000;
+    border: 1px solid var(--gold);
+    z-index: 9;
+    max-height: 240px;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch
+}
+
+.select-list div {
+    padding: 14px;
+    border-bottom: 1px solid #222;
+    cursor: pointer
+}
+
+.select-list div:hover {
+    background: #111
+}
+
+/* WhatsApp */
+.phone-row {
+    display: flex;
+    gap: 10px
+}
+
+.phone-code {
+    flex: 0 0 58%
+}
+
+.phone-num {
+    flex: 1
+}
+
+.phone-trigger {
+    width: 100%;
+    padding: 14px;
+    background: #000;
+    border: 1px solid var(--gold);
+    border-radius: 10px;
+    color: var(--gold);
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    gap: 10px;
+}
+
+.phone-trigger span:first-child {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.phone-trigger.disabled {
+    opacity: .35;
+    pointer-events: none
+}
+
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .85);
+    z-index: 9999;
+    padding: 16px
+}
+
+.modal.open {
+    display: block
+}
+
+.modal-box {
+    max-width: 420px;
+    margin: auto;
+    background: #000;
+    border: 1px solid var(--gold);
+    border-radius: 12px;
+    overflow: hidden
+}
+
+.modal-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    border-bottom: 1px solid #222
+}
+
+.modal-head .t {
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: var(--gold2)
+}
+
+.modal-close {
+    background: #000;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 8px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 13px
+}
+
+.modal-body {
+    padding: 12px
+}
+
+.search-wrap {
+    position: relative
+}
+
+.search {
+    width: 100%;
+    padding: 14px 44px 14px 14px;
+    background: #000;
+    border: 1px solid var(--gold);
+    border-radius: 10px;
+    color: var(--gold);
+    font-size: 16px
+}
+
+.search::placeholder {
+    color: rgba(183, 108, 255, .6)
+}
+
+.search-ico {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: .8;
+    font-size: 18px
+}
+
+.country-list {
+    margin-top: 10px;
+    border: 1px solid var(--gold);
+    border-radius: 10px;
+    max-height: 320px;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch
+}
+
+.country-item {
+    padding: 14px;
+    border-bottom: 1px solid #222;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    cursor: pointer
+}
+
+.country-item:hover {
+    background: #111
+}
+
+.country-item .name {
+    color: var(--gold2);
+    font-size: 14px
+}
+
+.country-item .code {
+    color: var(--gold);
+    font-size: 14px;
+    white-space: nowrap
+}
+
+.country-empty {
+    padding: 14px;
+    opacity: .7;
+    text-align: center
+}
+
+.checks {
+    margin: 18px 0
+}
+
+.checks label {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 14px;
+    margin-bottom: 8px
+}
+
+.checks input {
+    width: 18px;
+    height: 18px;
+    margin-top: 2px
+}
+
+button {
+    width: 100%;
+    padding: 16px;
+    margin-top: 14px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer
+}
+
+button:disabled {
+    opacity: .35;
+    pointer-events: none
+}
+
+.btn-main {
+    background: linear-gradient(90deg, var(--gold), var(--gold2), var(--gold));
+    background-size: 200% 100%;
+    animation: shine 3s linear infinite;
+    color: #000
+}
+
+.pass-wrap {
+    position: relative
+}
+
+.pass-wrap input {
+    padding-right: 44px
+}
+
+.eye {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+    opacity: .7
+}
+
+.eye:hover {
+    opacity: 1
+}
+
+footer {
+    margin-top: 24px;
+    text-align: center;
+    font-size: 12px;
+    opacity: .65
+}
+
+/* Mensajes */
+.msg {
+    margin-top: 10px;
+    padding: 12px;
+    border: 1px solid #222;
+    border-radius: 10px;
+    font-size: 14px;
+    display: none;
+}
+
+.msg.show {
+    display: block
+}
+
+.msg.err {
+    border-color: #6b2b2b
+}
+
+.msg.ok {
+    border-color: #2b6b2b
+}
+
+/* Upload */
+.file-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px
+}
+
+.file-box {
+    border: 1px dashed var(--gold);
+    border-radius: 10px;
+    padding: 12px;
+    font-size: 13px;
+    color: var(--gold2);
+}
+
+.file-box strong {
+    display: block;
+    margin-bottom: 8px
+}
+
+.file-box small {
+    display: block;
+    opacity: .75;
+    margin-top: 8px
+}
+
+/* Botón custom */
+.file-btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid var(--gold);
+    background: #000;
+    color: var(--gold);
+    cursor: pointer;
+    text-align: center;
+    font-size: 14px;
+}
+
+.file-btn:disabled {
+    opacity: .35;
+    pointer-events: none
+}
+
+.file-btn.ok {
+    border-color: #2b6b2b;
+    color: var(--gold2);
+}
+
+/* input real oculto */
+.file-input {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
