@@ -294,10 +294,14 @@ input[readonly] {
     margin-bottom: 8px
 }
 
-.checks input {
-    width: 18px;
-    height: 18px;
-    margin-top: 2px
+.checks input[type="checkbox"] {
+    width: 20px !important;
+    height: 20px !important;
+    min-width: 20px !important;
+    min-height: 20px !important;
+    flex-shrink: 0 !important;
+    margin-top: 2px;
+    cursor: pointer;
 }
 
 button {
@@ -320,6 +324,27 @@ button:disabled {
     background-size: 200% 100%;
     animation: shine 3s linear infinite;
     color: #000
+}
+
+.btn-back {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: auto;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    margin: 0;
+    padding: 10px 20px;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    backdrop-filter: blur(5px);
+}
+
+.btn-back:hover {
+    background: rgba(183, 108, 255, 0.2);
 }
 
 .pass-wrap {

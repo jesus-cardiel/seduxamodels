@@ -12,10 +12,10 @@
     @if(Auth::check())
       // Sincronizar sesión de Laravel con el frontend
       localStorage.setItem('seduxa_logged_user', JSON.stringify({
-          id: "{{ Auth::user()->id }}",
-          name: "{{ Auth::user()->name }}",
-          email: "{{ Auth::user()->email }}",
-          role: "{{ Auth::user()->role }}"
+        id: "{{ Auth::user()->id }}",
+        name: "{{ Auth::user()->name }}",
+        email: "{{ Auth::user()->email }}",
+        role: "{{ Auth::user()->role }}"
       }));
     @endif
   </script>
@@ -35,7 +35,7 @@
       </div>
 
       <div class="topActions">
-        <a class="topLink" href="/registro">Registro de agencias</a>
+        <a class="topLink" href="/registro-studios">Registro de agencias</a>
         <a class="topLink" href="/registro">Registro de modelos</a>
       </div>
     </header>
@@ -74,7 +74,6 @@
             <div class="userHello" id="userHello">Hola</div>
             <div class="userId" id="userId">ID:</div>
 
-            <!-- ✅ BOTÓN CERRAR SESIÓN (NUEVO) -->
             <button type="button" class="btnGhostSm" onclick="logoutSeduxa()">Cerrar sesión</button>
           </div>
         </div>
@@ -96,12 +95,12 @@
           <div class="sideTitle">Accesos</div>
 
           <div class="miniStack">
-            <a class="miniLink" href="/registro">Registro Studios</a>
+            <a class="miniLink" href="/registro-studios">Registro Studios</a>
             <a class="miniLink miniLinkAction" href="#" data-open-access="studios">Acceso Studios</a>
           </div>
 
           <div class="miniStack">
-            <a class="miniLink" href="/registro">Registro Models</a>
+            <a class="miniLink" href="/registro-modelos">Registro Models</a>
             <a class="miniLink miniLinkAction" href="#" data-open-access="models">Acceso Models</a>
           </div>
         </div>
@@ -280,9 +279,9 @@
     </div>
 
   </div>
-    <form id="logoutForm" action="{{ route('logout') }}" method="POST" style="display:none">
-      @csrf
-    </form>
-  </body>
+  <form id="logoutForm" action="{{ route('logout') }}" method="POST" style="display:none">
+    @csrf
+  </form>
+</body>
 
 </html>

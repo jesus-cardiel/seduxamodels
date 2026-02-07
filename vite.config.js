@@ -12,6 +12,10 @@ export default defineConfig({
                 'resources/js/home.js',
                 'resources/css/registro_usuario.css',
                 'resources/js/registro_usuario.js',
+                'resources/css/registro_studios.css',
+                'resources/js/registro_studios.js',
+                'resources/css/registro_modelos.css',
+                'resources/js/registro_modelos.js',
                 'resources/js/helpers/swal.js'
             ],
             refresh: true,

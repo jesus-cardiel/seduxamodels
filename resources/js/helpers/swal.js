@@ -20,7 +20,7 @@ export const notifySuccess = (title = 'Éxito', text = '') => {
         icon: 'success',
         title,
         text,
-        timer: 2000,
+        timer: 5000,
         showConfirmButton: false
     });
 };

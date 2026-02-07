@@ -9,5 +9,6 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::prefix('v1')->group(function () {
-    //
+    Route::post('/studios/register', [App\Http\Controllers\Api\V1\StudioRegisterController::class, 'store']);
+    Route::post('/models/register', [App\Http\Controllers\Api\V1\ModelRegisterController::class, 'store']);
 });
