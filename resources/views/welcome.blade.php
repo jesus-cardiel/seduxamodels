@@ -109,7 +109,7 @@
         <div class="sideSection" data-guest-only>
           <div class="sideTitle">Contáctanos</div>
           <div class="miniStack">
-            <a class="miniLink" href="mailto:soporte@seduxamodels.com">Público</a>
+            <a class="miniLink" href="mailto:jesus.cardielg@gmail.com">Público</a>
           </div>
           <div class="miniStack">
             <a class="miniLink" href="/contacto-formulario">Usuarios, Modelos, Studios</a>
@@ -197,9 +197,10 @@
           <div class="sideTitle">Legal</div>
 
           <div class="legal">
-            <a href="./aviso_legal.html">Aviso legal</a>
-            <a href="./terminos.html">Términos y condiciones</a>
-            <a href="./privacidad.html">Política de privacidad</a>
+            <a href="/aviso-legal">Aviso legal</a>
+            <a href="/terminos-condiciones">Términos y condiciones</a>
+            <a href="/politica-privacidad">Política de privacidad</a>
+            <a href="/reglamentos">Reglamentos</a>
           </div>
 
           <div class="copyright">

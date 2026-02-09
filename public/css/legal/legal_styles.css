@@ -1,0 +1,110 @@
+:root {
+    /* Fondo */
+    --bg: #0a0b10;
+    --card: #10121a;
+    --line: #1c1f2e;
+
+    /* Texto */
+    --text: #f2f4ff;
+    --muted: rgba(242, 244, 255, .72);
+
+    /* ✅ Lila / Fucsia oficiales */
+    --lila: #b76cff;
+    --fucsia: #ff2aa6;
+    --accentSoft: rgba(183, 108, 255, .22);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg);
+    color: var(--muted);
+    font-family: Georgia, serif;
+    line-height: 1.55;
+    padding: 30px 14px 60px;
+}
+
+.wrap {
+    max-width: 920px;
+    margin: auto;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 28px 20px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 26px;
+    margin-bottom: 16px;
+    background: linear-gradient(90deg, var(--lila), var(--fucsia));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+h2 {
+    margin-top: 22px;
+    font-size: 18px;
+    color: var(--lila);
+}
+
+p,
+li {
+    font-size: 14px;
+    margin-top: 8px;
+    color: var(--muted);
+}
+
+ul {
+    padding-left: 22px;
+}
+
+a {
+    color: var(--fucsia);
+    text-decoration: none;
+}
+
+a:hover {
+    color: #fff;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 30px;
+    border-top: 1px solid var(--line);
+    padding-top: 14px;
+    font-size: 12px;
+    opacity: .7;
+    color: var(--muted);
+    line-height: 1.4;
+}
+
+.btn-back {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: auto;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--lila);
+    color: var(--lila);
+    margin: 0;
+    padding: 10px 20px;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    backdrop-filter: blur(5px);
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.btn-back:hover {
+    background: rgba(183, 108, 255, 0.2);
+}

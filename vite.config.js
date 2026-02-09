@@ -16,7 +16,11 @@ export default defineConfig({
                 'resources/js/registro_studios.js',
                 'resources/css/registro_modelos.css',
                 'resources/js/registro_modelos.js',
-                'resources/js/helpers/swal.js'
+                'resources/css/usuarios/olvide_password.css',
+                'resources/js/usuarios/olvide_password.js',
+                'resources/js/helpers/swal.js',
+                'resources/css/contactanos_registrados.css',
+                'resources/js/contactanos_registrados.js'
             ],
             refresh: true,
         }),
