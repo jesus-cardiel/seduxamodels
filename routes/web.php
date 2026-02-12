@@ -22,6 +22,14 @@ Route::get('/olvide-password', function () {
     return view('usuarios.olvide_password');
 });
 
+Route::get('/olvide-password-studios', function () {
+    return view('estudios.olvide_password');
+});
+
+Route::get('/olvide-password-models', function () {
+    return view('modelos.olvide_password');
+});
+
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/vip/register', [App\Http\Controllers\Api\V1\VipRegisterController::class, 'store']);
 
@@ -53,3 +61,17 @@ Route::get('/contacto-formulario', function () {
 Route::post('/contacto-enviar', [ContactController::class, 'send'])->name('contacto.send');
 
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::middleware(['auth:studio'])->group(function () {
+    Route::get('/studio/dashboard', function () {
+        return view('estudios.dashboard.index');
+    })->name('studio.dashboard');
+
+    Route::get('/studio/models', function () {
+        return view('estudios.dashboard.models');
+    })->name('studio.models');
+
+    Route::get('/studio/wallet', function () {
+        return view('estudios.dashboard.wallet');
+    })->name('studio.wallet');
+});

@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class Studio extends Model
+class Studio extends Authenticatable
 {
+    use Notifiable;
+
     protected $fillable = [
         'name',
         'email',
@@ -17,4 +20,13 @@ class Studio extends Model
         'country_code',
         'whatsapp',
     ];
+
+    protected $hidden = [
+        'password',
+    ];
+
+    public function models()
+    {
+        return $this->hasMany(WebcamModel::class);
+    }
 }

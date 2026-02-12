@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class WebcamModel extends Model
+class WebcamModel extends Authenticatable
 {
+    use Notifiable;
+
     protected $table = 'models';
 
     protected $fillable = [
@@ -18,5 +21,15 @@ class WebcamModel extends Model
         'password',
         'selfie',
         'status',
+        'studio_id',
     ];
+
+    protected $hidden = [
+        'password',
+    ];
+
+    public function studio()
+    {
+        return $this->belongsTo(Studio::class);
+    }
 }

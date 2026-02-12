@@ -14,18 +14,38 @@ class LoginController extends Controller
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
+            'kind' => ['nullable', 'string'],
         ]);
 
-        if (Auth::attempt($credentials, $request->boolean('remember'))) {
+        $kind = $request->input('kind');
+        $guard = 'web';
+
+        if ($kind === 'studios') {
+            $guard = 'studio';
+        } elseif ($kind === 'models') {
+            $guard = 'model';
+        }
+
+        if (Auth::guard($guard)->attempt($request->only('email', 'password'), $request->boolean('remember'))) {
             $request->session()->regenerate();
+
+            $user = Auth::guard($guard)->user();
+
+            $redirect = '/';
+            if ($guard === 'studio') {
+                $redirect = route('studio.dashboard');
+            } elseif ($guard === 'model') {
+                $redirect = route('model.dashboard');
+            }
 
             return response()->json([
                 'message' => 'Login exitoso',
+                'redirect' => $redirect,
                 'user' => [
-                    'id' => Auth::user()->id,
-                    'name' => Auth::user()->name,
-                    'email' => Auth::user()->email,
-                    'role' => Auth::user()->role,
+                    'id' => $user->id,
+                    'name' => $user->name ?? $user->real_name,
+                    'email' => $user->email,
+                    'role' => $kind ?? 'user',
                 ]
             ]);
         }

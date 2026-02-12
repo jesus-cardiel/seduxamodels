@@ -34,6 +34,9 @@
             <input id="nick" name="nick" type="text" inputmode="text" autocomplete="off"
                 placeholder="Sujeto a disponibilidad" disabled>
 
+            <label>Código de Studio (opcional)</label>
+            <input id="studioCode" name="studioCode" type="text" autocomplete="off" placeholder="Ej: ST-20491" disabled>
+
             <label>Edad (18 a 50) *</label>
             <select id="age" name="age" disabled>
                 <option value="">Selecciona</option>

@@ -40,6 +40,16 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'studio' => [
+            'driver' => 'session',
+            'provider' => 'studios',
+        ],
+
+        'model' => [
+            'driver' => 'session',
+            'provider' => 'models',
+        ],
     ],
 
     /*
@@ -63,6 +73,16 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', App\Models\User::class),
+        ],
+
+        'studios' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Studio::class,
+        ],
+
+        'models' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\WebcamModel::class,
         ],
 
         // 'users' => [

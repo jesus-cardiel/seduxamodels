@@ -20,7 +20,9 @@ export default defineConfig({
                 'resources/js/usuarios/olvide_password.js',
                 'resources/js/helpers/swal.js',
                 'resources/css/contactanos_registrados.css',
-                'resources/js/contactanos_registrados.js'
+                'resources/js/contactanos_registrados.js',
+                'resources/css/estudios/olvide_password.css',
+                'resources/js/estudios/olvide_password.js'
             ],
             refresh: true,
         }),

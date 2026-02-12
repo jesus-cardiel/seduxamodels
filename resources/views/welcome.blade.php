@@ -4,8 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <title>SeduxaModels – Portada</title>
-  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <title>SeduxaModels – Portada v2</title>
   <meta name="csrf-token" content="{{ csrf_token() }}">
   @vite(['resources/css/home.css', 'resources/js/home.js'])
   <script>
@@ -268,13 +267,24 @@
           <button type="button" class="modalClose" data-close-access="1" aria-label="Cerrar">✕</button>
         </div>
         <div class="modalBody" id="accessBody">
-          <div class="accessBox">
-            <div class="accessText" id="accessText">Acceso</div>
-            <div class="accessHint">Placeholder (ruta server). Luego se conecta al login real.</div>
+          <div class="auth accessAuth">
+            <input type="hidden" id="accessKind">
+            <label class="miniLabel">Correo</label>
+            <input class="miniInput" id="accessEmail" type="email" placeholder="correo@dominio.com" />
+            <label class="miniLabel">Contraseña</label>
+            <div class="pass-wrap">
+              <input class="miniInput" id="accessPass" type="password" placeholder="••••••••" />
+              <button type="button" class="toggle-pass" aria-label="Mostrar contraseña">👁</button>
+            </div>
+            <button class="btnPrimarySm" id="btnAccessLogin" type="button"
+              style="margin-top: 15px; width: 100%;">Ingresar</button>
+            <div class="authLinks" style="margin-top: 10px; text-align: center;">
+              <a href="#" id="forgotPasswordLink">Me olvidé de mi password</a>
+            </div>
           </div>
         </div>
         <div class="modalFooter">
-          <button type="button" class="modalBtn" data-close-access="1">Cerrar</button>
+          <button type="button" class="modalBtn ghost" data-close-access="1">Cerrar</button>
         </div>
       </div>
     </div>

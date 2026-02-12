@@ -2,6 +2,7 @@ import { notifySuccess, notifyError } from './helpers/swal.js';
 
 const realName = document.getElementById('realName');
 const nick = document.getElementById('nick');
+const studioCode = document.getElementById('studioCode');
 const age = document.getElementById('age');
 
 const phoneTrigger = document.getElementById('phoneTrigger');
@@ -56,8 +57,14 @@ realName.addEventListener('input', () => {
 
 nick.addEventListener('input', () => {
     const ok = nick.value.trim().length >= 3;
+    studioCode.disabled = !ok;
+    if (!ok) { studioCode.value = ''; age.disabled = true; age.value = ''; phoneTrigger.classList.add('disabled'); }
+});
+
+studioCode.addEventListener('input', () => {
+    // studioCode es opcional, así que habilitamos age siempre que nick sea válido
+    const ok = nick.value.trim().length >= 3;
     age.disabled = !ok;
-    if (!ok) { age.value = ''; phoneTrigger.classList.add('disabled'); }
 });
 
 age.addEventListener('change', () => {
